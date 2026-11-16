@@ -55,3 +55,104 @@ Private IP address (An IP address that is only known by you):
 
 ## Subnetting 
 - Subnetting is the practice of dividing a large IP network into smaller, more manageable sub-networks (subnets) to improve performance, boost security, and conserve IP addresses
+
+Sidenote:
+The numbers — **128, 64, 32, 16, 8, 4, 2, 1** — are called binary place values.
+
+They're there because the binary number system works using powers of 2.
+
+Let's start from the beginning.
+**1. Why these specific numbers?**
+Remember that computers use bits, and each bit can be either 0 or 1.
+
+Each position in an 8-bit binary number has a value.
+
+Starting from the right, the values double every time you move one position to the left.
+The 8 binary place values
+128 - 2^7
+
+
+64 - 2^6
+
+
+32 - 2^5
+
+
+16 - 2^4
+
+
+8 - 2^3
+
+
+4 - 2^2
+
+
+2 - 2^1
+
+
+1 - 2^0
+
+
+
+Each position is twice the value of the position to its right.
+
+Mathematically:
+|Position	| Calculation	| Value |
+|---------|-------------|-------|
+|1 | 2⁷ |	128 |
+|2 | 2⁶ |	64 |
+|3 | 2⁵ |	32 |
+|4 | 2⁴ |	16 |
+|5 | 2³ |	8 |
+|6 | 2² |	4 |
+|7 | 2¹ |	2 |
+|8 | 2⁰ |	1 |
+
+That's why we get those eight numbers.
+2. How do we use them?
+Let's convert a binary number into a normal decimal number.
+
+Suppose we have:
+
+11000000
+
+Place the binary digits above their corresponding values:
+Bit	1	1	0	0	0	0	0	0
+Value	128	64	32	16	8	4	2	1
+
+Now, here's the rule:
+- If the bit is 1, include its value.
+- If the bit is 0, ignore its value.
+Therefore:
+\[
+128+64=192
+\]
+
+So:
+
+11000000 = 192
+
+That's how computers' binary representation translates into the decimal numbers we see in IP addresses.
+3. Let's connect this to subnet masks
+Remember this subnet mask?
+
+255.255.255.0
+
+The number 255 is important because:
+\[
+128+64+32+16+8+4+2+1=255
+\]
+
+In binary:
+
+11111111 = 255
+
+Therefore:
+
+255.255.255.0 in binary is:
+
+11111111.11111111.11111111.00000000
+
+That's 24 ones followed by 8 zeros.
+
+And that's exactly why it's a /24 subnet!
