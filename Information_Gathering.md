@@ -25,3 +25,17 @@
 
 ## Identifying our target 
 https://bugcrowd.com/engagements/tesla
+
+## Discovering email addresses
+- You can use the following website to find someones email or a company's email:
+  - https://hunter.io/
+  - https://phonebook.cz/
+  - https://intelx.io/
+ 
+## Gathering breached credentials
+- https://github.com/hmaverickadams/breach-parse
+
+## Hunting breached credentials with DeHashed
+- Try looking up a website that displays any historically breached data
+- If you find a website you can search the name or company name or even a domain to find a pattern.
+  - e.g: "@company.com"
