@@ -36,3 +36,13 @@
   - mkdir foldername
   - cd foldername/
   - gedit nikto.txt
+
+## Enumerating HTTP and HTTPS Part 2
+- We will be using dirbuster to find hidden directories
+  - Run the command: "dirbuster&"
+  - This will open a dirbuster UI. You will have to manually navigate to the dirbuster wordlist and click next to start scanning 
+  - Run 192.168.19.129:80/ in the folder: /usr/wordlists/dirbuster/directory-list-2.3-small.txt
+- Burp suite can also be used to intercept and enumerate the HTTP. Burp suite could possibly expose information about the server in the header so keep note of that.
+  - In this example the header exposed the version information of the server which is a vulnerability on its own. E.g: Server: Apache/1.3.20 (Unix) (Red-Hat/Linux) nod_ssl/2.8.4 OpenSSL/0.9.6b
+- When the dirbuster scanner is finished your goal should be to dig through all the results and enumerate, find hints, any server info that can be useful, etc.
+- When you see a website you are looking for service version information, any backend directories, potential vuln scanning, and any sort of information you can use.  
