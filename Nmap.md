@@ -46,3 +46,10 @@
   - In this example the header exposed the version information of the server which is a vulnerability on its own. E.g: Server: Apache/1.3.20 (Unix) (Red-Hat/Linux) nod_ssl/2.8.4 OpenSSL/0.9.6b
 - When the dirbuster scanner is finished your goal should be to dig through all the results and enumerate, find hints, any server info that can be useful, etc.
 - When you see a website you are looking for service version information, any backend directories, potential vuln scanning, and any sort of information you can use.  
+
+## Enumerating SMB (Port 139)
+- SMB is a file share. Think about your work environment, if you go to work and you have a drive that yiou can access, this drive can be accessed to upload and download files, and your co-workers can also see that file share. That's why it is called a file share.
+- SMB is commonly used in work environments.\
+- You need to know the SMB version running because the type of version running could potentially lead to an exploit. So the goal right now is to look for the version information, see if there is any connections available to us, and if we get to the file we can check if there is anything malicious.
+- In the terminal we are gonna use the tool metasploit.
+  - In the terminal type the command: msfconsole 
