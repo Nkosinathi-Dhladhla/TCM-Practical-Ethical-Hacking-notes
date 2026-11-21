@@ -45,11 +45,39 @@
 - Burp suite can also be used to intercept and enumerate the HTTP. Burp suite could possibly expose information about the server in the header so keep note of that.
   - In this example the header exposed the version information of the server which is a vulnerability on its own. E.g: Server: Apache/1.3.20 (Unix) (Red-Hat/Linux) nod_ssl/2.8.4 OpenSSL/0.9.6b
 - When the dirbuster scanner is finished your goal should be to dig through all the results and enumerate, find hints, any server info that can be useful, etc.
-- When you see a website you are looking for service version information, any backend directories, potential vuln scanning, and any sort of information you can use.  
+- When you see a website you are looking for service version information, any backend directories, potential vuln scanning, and any sort of information you can use.
+
+### Gobuster
+- This is another method that can be used to look for directories.
+- -u is the target URL or Domain
+- -v is the verbose output
+- -w is a path t the wordlist
+- -x refers to file extension to search for (dir mode only)
+- e.g: gobuster dir -u http://192.168.0.103:80 -w /usr/share/wordlists/dirb/big.txt
 
 ## Enumerating SMB (Port 139)
 - SMB is a file share. Think about your work environment, if you go to work and you have a drive that yiou can access, this drive can be accessed to upload and download files, and your co-workers can also see that file share. That's why it is called a file share.
 - SMB is commonly used in work environments.\
 - You need to know the SMB version running because the type of version running could potentially lead to an exploit. So the goal right now is to look for the version information, see if there is any connections available to us, and if we get to the file we can check if there is anything malicious.
 - In the terminal we are gonna use the tool metasploit.
-  - In the terminal type the command: msfconsole 
+  - Metasploit is an exploitation framework
+  - In the terminal type the command: msfconsole
+  - After the command is done, type 'search SMB'
+  - This command will be used to see if there are any modules for SMB enumeration.
+    - you might see something like: auxiliary/scanner/smb/psexec
+    - Auxiliary - this is an auxiliary module
+    - scanner - this is the action
+  - Use one of the modules by typing 'use auxiliary/scanner/smb/psexec'
+  - Type info to get info on how to use the module
+  - In this case it is showing RHOSTS which stands for remote hosts. RHOSTS is who we are attacking. We are gonna use RHOSTS by typing the following commands in order:
+    - set RHOSTS 192.168.57.139
+    - run
+    - This will show the version of the SMB. This will make it easier to do research on exploitation against this version.
+
+- Now we are going to use a new tool called smbclient
+  - This tool is going to attempt to connect to the file share that is out there. We could potentially see files that are valuable to us. This could include exposed passwords, backup files, private files.
+  - Use the following command:
+    - smbclient -L \\\\192.168.57.134\\
+    - This will display the file shares.
+      - After accessing this file share we can accessing one of the files by adding the sharename on the command:
+      - smbclient \\\\192.168.57.134\\ADMIN$ (This method might not work, try a different sharename)
