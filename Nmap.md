@@ -81,3 +81,8 @@
     - This will display the file shares.
       - After accessing this file share we can accessing one of the files by adding the sharename on the command:
       - smbclient \\\\192.168.57.134\\ADMIN$ (This method might not work, try a different sharename)
+
+## Enumerating SSH (Port 22)
+- We will attempt to connect to SSH using this specific port\
+- Try the command: ssh 192.168.57.134
+- There isnt much to enumerate in SSH, we mostly exploit this.
