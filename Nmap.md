@@ -86,3 +86,24 @@
 - We will attempt to connect to SSH using this specific port\
 - Try the command: ssh 192.168.57.134
 - There isnt much to enumerate in SSH, we mostly exploit this.
+
+## Researching potential vulnerabilities
+- So far from the enumeration we have found the following information about the target:
+  - Port 80/443 - 192.168.57.134
+  - Default webpage - Apache - PHP
+  - Information Disclosure - 404 page
+  - Information Disclosure - server headers disclose version information
+  - 80/tcp open http Apache httpd 1.3.20 (Unix) (Red-Hat/Linux) mod_ssl/2.8.4 OpenSSL/0.9.6b)
+  - SMB Unix (Samba 2.2.1a)
+  - Webalizer Version 2.01 - http://192.168.57.134/usage_201911.html
+  - SSH OpenSSH 2.9p2
+- When attacking we will attack in the order: 80, 443, 139, 445
+- Go to google and search mod_ssl2.8.4 exploit
+- You can also look up apache httpd 1.3..20 exploit
+- You can also look up Samba 2.2.1a exploit
+- If you are doing this without any internet you can do it on the linux terminal
+- Use the tool called searchsploit:
+  - E.g: searchsploit Samba 2.2.1a
+  - The previous one might not work because you cannot be too specific when using searchsploit. So try this one: 
+  - searchsploit Samba 2
+  - You can also say searchsploit mod ssl 2
